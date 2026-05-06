@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komar Uni AI - KUST Smart Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>KOMAR UNI AI</h1>
+                    <p>Smart University Assistant</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                <li><a href="#chat"><i class="fas fa-comments"></i> Chat</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-icon">🤖</div>
+            <h1>Welcome to Komar Uni AI</h1>
+            <p>Your Intelligent University Assistant Powered by Advanced AI</p>
+            <p class="hero-subtitle">Powered by KUST | Ethics • Knowledge • Skills</p>
+            <button class="btn-primary" onclick="scrollToChat()">
+                <i class="fas fa-comments"></i> Start Chatting Now
+            </button>
+        </div>
+        <div class="hero-background">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose Komar Uni AI?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Advanced GPT-2 technology for intelligent, context-aware responses</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Research Capability</h3>
+                    <p>Access to comprehensive knowledge base and real-time information</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Real-time Chat</h3>
+                    <p>Instant responses to your questions available 24/7</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Chat History</h3>
+                    <p>Keep track of all conversations with timestamps and sources</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Source Citations</h3>
+                    <p>See where answers come from with verified sources</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>KUST Integration</h3>
+                    <p>Specialized knowledge about KUST and academic topics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section class="chat-section" id="chat">
+        <div class="container chat-container">
+            <div class="chat-wrapper">
+                <!-- Main Chat Area -->
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="header-title">
+                            <h2>💬 Chat with Komar Uni AI</h2>
+                            <p>Ask me anything about programming, AI, KUST, or education</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn-icon" onclick="clearHistory()" title="Clear History">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn-icon" onclick="downloadHistory()" title="Download History">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <strong>Komar Uni AI:</strong>
+                                <p>Hello! I'm Komar Uni AI, your smart assistant from KUST. I can help you with:</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li>Programming questions (Python, JavaScript, C++, Java)</li>
+                                    <li>AI and Machine Learning topics</li>
+                                    <li>Information about KUST and university life</li>
+                                    <li>General knowledge and research</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem;">What would you like to learn today? 🚀</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Tools -->
+                    <div class="research-tools">
+                        <h4>🔍 Quick Search</h4>
+                        <div class="research-buttons">
+                            <button class="btn-research" onclick="quickSearch('python')">
+                                <i class="fab fa-python"></i> Python
+                            </button>
+                            <button class="btn-research" onclick="quickSearch('ai')">
+                                <i class="fas fa-brain"></i> AI
+                            </button>
+                            <button class="btn-research" onclick="quickSearch('kust')">
+                                <i class="fas fa-university"></i> KUST
+                            </button>
+                            <button class="btn-research" onclick="quickSearch('web')">
+                                <i class="fas fa-globe"></i> Web Dev
+                            </button>
+                            <button class="btn-research" onclick="quickSearch('javascript')">
+                                <i class="fab fa-js"></i> JavaScript
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-area">
+                        <input 
+                            type="text" 
+                            id="userInput" 
+                            placeholder="Type your message here... (or press Enter to send)"
+                            onkeypress="handleKeyPress(event)"
+                            autocomplete="off"
+                        >
+                        <button class="btn-send" onclick="sendMessage()" title="Send Message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="input-hint">💡 Tip: Use natural language to ask questions and the AI will provide research-backed answers</p>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="chat-sidebar">
+                    <div class="sidebar-section">
+                        <h3>📋 Chat History</h3>
+                        <div class="history-list" id="historyList">
+                            <p class="empty-state">No messages yet</p>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>📚 Quick Topics</h3>
+                        <div class="topics-list">
+                            <button class="topic-btn" onclick="addTopic('What is Python?')">Python Basics</button>
+                            <button class="topic-btn" onclick="addTopic('Tell me about AI')">AI Explained</button>
+                            <button class="topic-btn" onclick="addTopic('How does machine learning work?')">Machine Learning</button>
+                            <button class="topic-btn" onclick="addTopic('What is KUST?')">About KUST</button>
+                            <button class="topic-btn" onclick="addTopic('Best programming languages to learn')">Programming</button>
+                            <button class="topic-btn" onclick="addTopic('How to learn web development')">Web Development</button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>⚙️ Settings</h3>
+                        <label class="setting-item">
+                            <input type="checkbox" id="autoScroll" checked> Auto-scroll
+                        </label>
+                        <label class="setting-item">
+                            <input type="checkbox" id="showTimestamps" checked> Show timestamps
+                        </label>
+                        <label class="setting-item">
+                            <input type="checkbox" id="soundNotification"> Sound notification
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sources Container -->
+            <div id="sourcesContainer" class="sources-container" style="display:none;">
+                <div class="sources-header">
+                    <h4>📚 Sources Used</h4>
+                    <button onclick="toggleSources()" class="btn-icon-small">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+                <div class="sources-content" id="sourcesList"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Komar Uni AI</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Smart University Assistant</h3>
+                    <p>Komar Uni AI is an intelligent chatbot built specifically for students and faculty at KUST (Komar University of Science and Technology). Our AI combines advanced language models with a comprehensive knowledge base to provide accurate, research-backed answers to your questions.</p>
+                    
+                    <h4>🎯 Our Mission</h4>
+                    <p>To empower KUST students and faculty with accessible AI-powered educational support that promotes learning, research, and innovation.</p>
+
+                    <h4>🌟 Key Features</h4>
+                    <ul class="feature-list">
+                        <li><strong>Educational Support:</strong> Help with programming, AI, and academic topics</li>
+                        <li><strong>Research-Backed:</strong> Information is verified and sourced</li>
+                        <li><strong>24/7 Available:</strong> Always ready to help when you need it</li>
+                        <li><strong>Learning Resources:</strong> Links to official documentation and courses</li>
+                        <li><strong>KUST Integration:</strong> Specialized knowledge about our university</li>
+                    </ul>
+
+                    <h4>🛠 Technologies</h4>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">GPT-2</span>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Transformers</span>
+                    </div>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Questions Answered</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Available Online</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Topics Covered</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free to Use</div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🎓 About KUST</h4>
+                        <p><strong>Komar University of Science and Technology</strong></p>
+                        <p>Established: 2009</p>
+                        <p>Motto: Ethics • Knowledge • Skills</p>
+                        <p>Location: Sulaymaniyah, Iraq</p>
+                        <p>Specializations: Computer Science, Engineering, Science, Technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@komaruniai.kust.edu.iq</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Sulaymaniyah, Iraq</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+964 (0) 750 2222 222</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleContactForm(event)">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Komar Uni AI</h4>
+                    <p>Your smart assistant for learning and research</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Komar Uni AI - KUST. All rights reserved.</p>
+                <p>Powered by AI | Developed with ❤️ for KUST | Ethics • Knowledge • Skills</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
